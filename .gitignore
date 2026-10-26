@@ -1,0 +1,30 @@
+dataset/
+dataset_mal_entrenado_backup/
+Practica2/
+venv/
+models/*.onnx
+models/*.download
+build/
+dist/
+*.spec
+*.pkl
+*.h5
+*.task
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

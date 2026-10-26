@@ -1,0 +1,71 @@
+name: Build Windows release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller==6.16.0
+
+      - name: Download and verify OpenCV models
+        run: python -c "from detect_emotion_live import ensure_models; ensure_models()"
+
+      - name: Build portable application
+        shell: pwsh
+        run: |
+          pyinstaller --noconfirm --clean --onedir --console `
+            --name HamsterEmotionDetector `
+            --collect-all cv2 `
+            --add-data "overlays;overlays" `
+            --add-data "models;models" `
+            --add-data "LICENSE;." `
+            --add-data "THIRD_PARTY_NOTICES.md;." `
+            detect_emotion_live.py
+          Copy-Item packaging/windows/README-WINDOWS.txt dist/HamsterEmotionDetector/
+          Copy-Item packaging/windows/UNINSTALL.bat dist/HamsterEmotionDetector/
+
+      - name: Create portable ZIP
+        shell: pwsh
+        run: |
+          Compress-Archive `
+            -Path dist/HamsterEmotionDetector `
+            -DestinationPath HamsterEmotionDetector-Windows-x64.zip
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: HamsterEmotionDetector-Windows-x64
+          path: HamsterEmotionDetector-Windows-x64.zip
+
+      - name: Attach ZIP to GitHub release
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$env:GITHUB_REF_NAME" `
+            HamsterEmotionDetector-Windows-x64.zip `
+            --title "Hamster Emotion Detector $env:GITHUB_REF_NAME" `
+            --generate-notes
