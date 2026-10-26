@@ -1,82 +1,125 @@
 # Hamster Mood Cam
 
-Detector local de expresiones faciales que muestra un meme de hámster según la
-expresión observada por la cámara. Usa modelos preentrenados de OpenCV y **no
-necesita entrenarse con tu rostro**.
+Hamster Mood Cam usa la cámara de tu computadora y muestra un meme de hámster
+según la expresión que detecta. No necesita aprender tu cara y no guarda fotos
+ni videos.
 
-## Windows: descargar y abrir
+## Descargar y usar en Windows
 
-No necesitas instalar Python.
+No necesitas saber programar, instalar Python ni abrir una terminal.
 
-1. Abre [Descargar la última versión](https://github.com/Yamabiko101/hamster-mood-cam/releases/latest).
-2. En **Assets**, descarga `HamsterMoodCam-Windows-x64.zip`.
-3. Haz clic derecho en el ZIP y selecciona **Extraer todo**.
-4. Abre la carpeta extraída y haz doble clic en
-   `HamsterMoodCam.exe`.
-5. Permite el acceso a la cámara si Windows lo solicita.
+### 1. Descargar
 
-Para cerrar, pulsa `q` en la ventana del detector.
+Haz clic aquí:
 
-### Aviso de Windows SmartScreen
+### [⬇️ Descargar Hamster Mood Cam para Windows](https://github.com/Yamabiko101/hamster-mood-cam/releases/latest/download/HamsterMoodCam-Windows-x64.zip)
 
-El ejecutable no tiene firma digital. Si SmartScreen muestra una advertencia,
-pulsa **Más información** y después **Ejecutar de todas formas**, verificando
-antes que el ZIP provenga de este repositorio.
+Tu navegador guardará el archivo `HamsterMoodCam-Windows-x64.zip`, normalmente
+en la carpeta **Descargas**.
 
-## Borrar de Windows
+> No uses el botón verde **Code** de GitHub. Ese botón descarga el código fuente,
+> no la aplicación lista para usar.
 
-La aplicación es portable y no crea servicios, entradas de inicio ni claves del
-Registro.
+### 2. Extraer el archivo
 
-1. Cierra el programa.
-2. Elimina la carpeta `HamsterMoodCam`.
-3. Elimina también el ZIP descargado si todavía lo conservas.
+1. Abre el **Explorador de archivos**. Es el icono de una carpeta amarilla.
+2. En la columna izquierda, abre **Descargas**.
+3. Busca `HamsterMoodCam-Windows-x64.zip`.
+4. Haz clic derecho sobre el archivo.
+5. Selecciona **Extraer todo...**.
+6. Pulsa **Extraer**.
 
-Eso borra todo. Como alternativa, abre `UNINSTALL.bat` dentro de la carpeta y
-pulsa `S`.
+Windows abrirá una carpeta nueva. Dentro encontrarás otra carpeta llamada
+`HamsterMoodCam`; ábrela.
 
-## Qué aparece al ejecutarlo
+> No abras el programa directamente dentro del ZIP. Primero debes usar
+> **Extraer todo...**.
 
-- A la izquierda: la cámara, un recuadro facial y la expresión detectada.
-- A la derecha: el meme correspondiente.
+### 3. Abrir la aplicación
 
-Solo utiliza la cara más grande que encuentra en el fotograma.
+1. Dentro de la carpeta `HamsterMoodCam`, busca `HamsterMoodCam.exe`.
+2. Haz doble clic en `HamsterMoodCam.exe`.
+3. Si Windows pide permiso para usar la cámara, selecciona **Sí** o **Permitir**.
+
+La primera apertura puede mostrar una advertencia de Windows porque el programa
+no tiene una firma digital comercial:
+
+1. Pulsa **Más información**.
+2. Pulsa **Ejecutar de todas formas**.
+
+Hazlo solamente si descargaste el archivo desde el enlace de este README.
+
+### 4. Usar y cerrar
+
+- Mira hacia la cámara con buena iluminación.
+- La cámara aparece a la izquierda y el meme aparece a la derecha.
+- Para cerrar, haz clic dentro de la ventana y pulsa la tecla `Q`.
+
+La aplicación usa solamente la cara más grande que detecta.
+
+## Si la cámara no aparece
+
+1. Cierra Zoom, Meet, Teams u otra aplicación que pueda estar usando la cámara.
+2. Abre **Configuración de Windows**.
+3. Entra en **Privacidad y seguridad** → **Cámara**.
+4. Activa **Acceso a la cámara** y **Permitir que las aplicaciones de escritorio
+   accedan a la cámara**.
+5. Vuelve a abrir `HamsterMoodCam.exe`.
+
+Comprueba también que ejecutaste el programa desde la carpeta extraída y no
+desde dentro del ZIP.
+
+## Borrar completamente
+
+Hamster Mood Cam es portable: no se instala en Windows, no inicia solo y no
+añade servicios ni claves al Registro.
+
+1. Cierra Hamster Mood Cam pulsando `Q`.
+2. Abre el **Explorador de archivos**.
+3. Busca la carpeta `HamsterMoodCam` que extrajiste.
+4. Haz clic derecho sobre la carpeta y selecciona **Eliminar**.
+5. Elimina también `HamsterMoodCam-Windows-x64.zip` de **Descargas**.
+
+Eso elimina completamente la aplicación. También puedes abrir `UNINSTALL.bat`
+dentro de la carpeta y pulsar `S`, pero borrar la carpeta manualmente es
+suficiente.
 
 ## Privacidad
 
-- Los fotogramas se procesan localmente y solo en memoria.
-- No se guardan fotografías, video ni resultados.
+- La cámara se procesa localmente y solo en memoria.
+- No se guardan fotografías, videos ni resultados.
 - No se entrena ningún modelo con tu rostro.
-- La versión portable no necesita Internet.
+- La aplicación descargada funciona sin Internet.
 
-## Código fuente (opcional)
+## Limitaciones
 
-### Windows
+- La expresión mostrada es una estimación visual, no el estado emocional real de
+  una persona.
+- La descarga está preparada para Windows de 64 bits.
+- El ejecutable no tiene firma digital comercial, por lo que Windows puede
+  mostrar la advertencia explicada anteriormente.
 
-Requiere Python 3.12 instalado desde
-[python.org](https://www.python.org/downloads/windows/), con **Add Python to
-PATH** activado.
+<details>
+<summary>Información para desarrolladores</summary>
 
-Si prefieres usar el código en vez del ZIP terminado, descárgalo, extráelo y haz
-doble clic en:
+### Ejecutar el código fuente
+
+En Windows, instala Python 3.12, descarga el código fuente y abre:
 
 ```text
 run_windows.bat
 ```
 
-La primera ejecución prepara todo dentro de esa misma carpeta. Las siguientes
-ejecuciones funcionan sin Internet.
-
-### macOS
+En macOS:
 
 ```bash
 ./run.command
 ```
 
-Si macOS bloquea el archivo, haz clic derecho sobre `run.command`, elige
-**Abrir** y confirma.
+La primera ejecución crea un entorno local y descarga aproximadamente 5 MB de
+modelos verificados dentro de la carpeta del proyecto.
 
-## Desarrollo y pruebas
+### Pruebas
 
 ```bash
 python3 -m venv venv
@@ -86,31 +129,15 @@ python -m pip install pytest
 python -m pytest -q
 ```
 
-La integración continua ejecuta las pruebas en Windows y Linux. Las versiones
-etiquetadas con `v*` generan automáticamente el ZIP portable de Windows mediante
-GitHub Actions.
+El proyecto usa OpenCV YuNet, OpenCV Zoo MobileFaceNet, NumPy y PyInstaller. El
+modelo produce siete categorías; `disgust` se agrupa con `angry` y `fearful`
+con `surprise` para utilizar los cinco memes disponibles.
 
-## Tecnología
-
-- OpenCV YuNet para detección facial y cinco puntos faciales.
-- OpenCV Zoo Progressive Teacher / MobileFaceNet para expresiones.
-- NumPy para el procesamiento en memoria.
-- PyInstaller para el paquete portable de Windows.
-
-El modelo de expresiones produce siete categorías. Para conservar los cinco
-memes del proyecto, `disgust` se agrupa con `angry` y `fearful` con `surprise`.
-
-## Limitaciones
-
-- La clasificación representa una estimación visual de la expresión, no el
-  estado emocional real de una persona.
-- El paquete publicado está dirigido a Windows x64.
-- El ejecutable no está firmado digitalmente.
-- La cámara debe estar disponible y no puede estar ocupada por otra aplicación.
+</details>
 
 ## Licencias y créditos
 
 Este proyecto deriva de
 [mtysac/meme-facerecognition](https://github.com/mtysac/meme-facerecognition)
-y conserva su licencia MIT. Los modelos preentrenados y sus huellas SHA-256 se
-documentan en [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+y conserva su licencia MIT. Los modelos y sus huellas SHA-256 se documentan en
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
