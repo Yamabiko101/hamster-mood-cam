@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent
 MODEL_DIR = BASE_DIR / "models"
 OVERLAY_DIR = BASE_DIR / "overlays"
 DISPLAY_SIZE = 480
-WINDOW_NAME = "Emotion Detector"
+WINDOW_NAME = "Hamster Mood Cam"
 
 EMOTIONS = ("angry", "happy", "neutral", "sad", "surprise")
 SOURCE_EMOTIONS = (
@@ -296,7 +296,7 @@ def run() -> int:
     blank_panel = np.full(
         (DISPLAY_SIZE, DISPLAY_SIZE, 3), 255, dtype=np.uint8
     )
-    print("Emotion detector started. Press q to quit.")
+    print("Hamster Mood Cam started. Press q to quit.")
 
     try:
         while True:

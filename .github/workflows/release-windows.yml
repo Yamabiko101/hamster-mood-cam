@@ -36,28 +36,28 @@ jobs:
         shell: pwsh
         run: |
           pyinstaller --noconfirm --clean --onedir --console `
-            --name HamsterEmotionDetector `
+            --name HamsterMoodCam `
             --collect-all cv2 `
             --add-data "overlays;overlays" `
             --add-data "models;models" `
             --add-data "LICENSE;." `
             --add-data "THIRD_PARTY_NOTICES.md;." `
             detect_emotion_live.py
-          Copy-Item packaging/windows/README-WINDOWS.txt dist/HamsterEmotionDetector/
-          Copy-Item packaging/windows/UNINSTALL.bat dist/HamsterEmotionDetector/
+          Copy-Item packaging/windows/README-WINDOWS.txt dist/HamsterMoodCam/
+          Copy-Item packaging/windows/UNINSTALL.bat dist/HamsterMoodCam/
 
       - name: Create portable ZIP
         shell: pwsh
         run: |
           Compress-Archive `
-            -Path dist/HamsterEmotionDetector `
-            -DestinationPath HamsterEmotionDetector-Windows-x64.zip
+            -Path dist/HamsterMoodCam `
+            -DestinationPath HamsterMoodCam-Windows-x64.zip
 
       - name: Upload workflow artifact
         uses: actions/upload-artifact@v7
         with:
-          name: HamsterEmotionDetector-Windows-x64
-          path: HamsterEmotionDetector-Windows-x64.zip
+          name: HamsterMoodCam-Windows-x64
+          path: HamsterMoodCam-Windows-x64.zip
 
       - name: Attach ZIP to GitHub release
         if: startsWith(github.ref, 'refs/tags/')
@@ -66,6 +66,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "$env:GITHUB_REF_NAME" `
-            HamsterEmotionDetector-Windows-x64.zip `
-            --title "Hamster Emotion Detector $env:GITHUB_REF_NAME" `
+            HamsterMoodCam-Windows-x64.zip `
+            --title "Hamster Mood Cam $env:GITHUB_REF_NAME" `
             --generate-notes

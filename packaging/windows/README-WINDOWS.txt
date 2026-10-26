@@ -1,10 +1,10 @@
-HAMSTER EMOTION DETECTOR - WINDOWS
-==================================
+HAMSTER MOOD CAM - WINDOWS
+==========================
 
 ABRIR
 -----
 1. Extrae TODO el contenido del ZIP.
-2. Haz doble clic en HamsterEmotionDetector.exe.
+2. Haz doble clic en HamsterMoodCam.exe.
 3. Permite el acceso a la camara si Windows lo solicita.
 4. Pulsa Q para cerrar.
 
@@ -19,7 +19,7 @@ El ejecutable no esta firmado digitalmente. Si Windows muestra una advertencia:
 
 BORRAR
 ------
-1. Cierra HamsterEmotionDetector.exe.
+1. Cierra HamsterMoodCam.exe.
 2. Elimina esta carpeta completa.
 3. Elimina tambien el ZIP descargado si todavia lo conservas.
 

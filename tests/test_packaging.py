@@ -16,14 +16,14 @@ def test_uninstaller_only_targets_its_own_folder():
     uninstaller = (
         ROOT / "packaging" / "windows" / "UNINSTALL.bat"
     ).read_text(encoding="utf-8")
-    assert 'set "HAMSTER_APP_DIR=%~dp0"' in uninstaller
-    assert 'if not exist "%HAMSTER_APP_DIR%HamsterEmotionDetector.exe"' in uninstaller
-    assert "Remove-Item -LiteralPath $env:HAMSTER_APP_DIR" in uninstaller
+    assert 'set "HAMSTER_MOOD_CAM_DIR=%~dp0"' in uninstaller
+    assert 'if not exist "%HAMSTER_MOOD_CAM_DIR%HamsterMoodCam.exe"' in uninstaller
+    assert "Remove-Item -LiteralPath $env:HAMSTER_MOOD_CAM_DIR" in uninstaller
 
 
 def test_release_zip_contains_top_level_application_folder():
     workflow = (
         ROOT / ".github" / "workflows" / "release-windows.yml"
     ).read_text(encoding="utf-8")
-    assert "-Path dist/HamsterEmotionDetector `" in workflow
-    assert "-Path dist/HamsterEmotionDetector/* `" not in workflow
+    assert "-Path dist/HamsterMoodCam `" in workflow
+    assert "-Path dist/HamsterMoodCam/* `" not in workflow

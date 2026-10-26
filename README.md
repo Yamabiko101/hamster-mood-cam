@@ -1,4 +1,4 @@
-# Hamster Emotion Detector
+# Hamster Mood Cam
 
 Detector local de expresiones faciales que muestra un meme de hámster según la
 expresión observada por la cámara. Usa modelos preentrenados de OpenCV y **no
@@ -8,11 +8,11 @@ necesita entrenarse con tu rostro**.
 
 No necesitas instalar Python.
 
-1. Abre [Descargar la última versión](https://github.com/Yamabiko101/hamster-emotion-detector/releases/latest).
-2. En **Assets**, descarga `HamsterEmotionDetector-Windows-x64.zip`.
+1. Abre [Descargar la última versión](https://github.com/Yamabiko101/hamster-mood-cam/releases/latest).
+2. En **Assets**, descarga `HamsterMoodCam-Windows-x64.zip`.
 3. Haz clic derecho en el ZIP y selecciona **Extraer todo**.
 4. Abre la carpeta extraída y haz doble clic en
-   `HamsterEmotionDetector.exe`.
+   `HamsterMoodCam.exe`.
 5. Permite el acceso a la cámara si Windows lo solicita.
 
 Para cerrar, pulsa `q` en la ventana del detector.
@@ -29,7 +29,7 @@ La aplicación es portable y no crea servicios, entradas de inicio ni claves del
 Registro.
 
 1. Cierra el programa.
-2. Elimina la carpeta `HamsterEmotionDetector`.
+2. Elimina la carpeta `HamsterMoodCam`.
 3. Elimina también el ZIP descargado si todavía lo conservas.
 
 Eso borra todo. Como alternativa, abre `UNINSTALL.bat` dentro de la carpeta y
